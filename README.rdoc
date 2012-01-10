@@ -2,6 +2,19 @@
 
 Adds a lock file to Capistrano deployments.
 
+== Installation
+
+   $ gem install caplock
+   
+Include in your Capfile
+    require 'rubygems'
+    require 'caplock'
+    
+== Usage
+
+Define the name of your lock file in your deploy.rb
+   set :lockfile, "my.lock" # defaults to "cap.lock"
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
