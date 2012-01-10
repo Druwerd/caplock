@@ -1,6 +1,6 @@
 = caplock
 
-Description goes here.
+Adds a lock file to Capistrano deployments.
 
 == Note on Patches/Pull Requests
  

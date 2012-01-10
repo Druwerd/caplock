@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "caplock"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Adds a lock file to Capistrano deployments}
+    gem.description = %Q{Adds a lock file to Capistrano deployments to prevent concurrent deployments.}
     gem.email = "Druwerd@gmail.com"
     gem.homepage = "http://github.com/Druwerd/caplock"
     gem.authors = ["Dru Ibarra"]
