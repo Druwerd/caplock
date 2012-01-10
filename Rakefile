@@ -10,6 +10,7 @@ begin
     gem.email = "Druwerd@gmail.com"
     gem.homepage = "http://github.com/Druwerd/caplock"
     gem.authors = ["Dru Ibarra"]
+    gem.add_dependency "capistrano", '>= 2.9.0'
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
