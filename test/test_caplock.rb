@@ -32,4 +32,9 @@ class TestCaplock < Test::Unit::TestCase
      assert_nil @config.lock.release
      assert_nil @config.lock.check
   end
+  
+  should "check for lock and abort" do
+     assert_nil @config.lock.create
+     assert_raises LocalJumpError
+  end
 end
