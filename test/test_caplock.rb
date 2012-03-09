@@ -37,4 +37,10 @@ class TestCaplock < Test::Unit::TestCase
      assert_nil @config.lock.create
      assert_raises LocalJumpError
   end
+  
+  should "check if remote file exists" do
+     @config.set :lockfile, 'test.lock'
+     assert_nil @config.lock.create
+     assert @config.caplock.remote_file_exists?("/tmp/test.lock")
+  end
 end
