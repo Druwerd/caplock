@@ -15,6 +15,9 @@ Include in your Capfile
 Define the name of your lock file in your deploy.rb
    set :lockfile, "my.lock" # defaults to "cap.lock"
 
+If the lockfile becomes stale (because you interrupted the deployment with CTRL-C for example)
+   cap lock:release  # or "cap production lock:release" with multistage
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
