@@ -6,7 +6,7 @@ module Capistrano
     # Returns Boolean indicating the result of +filetest+ on +full_path+ on the server, evaluated by shell on 
     # the server (usually bash or something roughly compatible).
     def remote_filetest_passes?(filetest, full_path)
-      'true' ==  capture("if [ #{filetest} #{full_path} ]; then echo 'true'; fi").strip
+      'true' ==  top.capture("if [ #{filetest} #{full_path} ]; then echo 'true'; fi").strip
     end
   
     # Checks if a symlink exists on the remote machine.
@@ -23,7 +23,7 @@ module Capistrano
     # is equivalent to content by checking whether or not the MD5 of the remote content is the same as the
     # MD5 of the String in +content+.
     def remote_file_content_same_as?(full_path, content)
-      Digest::MD5.hexdigest(content) == capture("md5sum #{full_path} | awk '{ print $1 }'").strip
+      Digest::MD5.hexdigest(content) == top.capture("md5sum #{full_path} | awk '{ print $1 }'").strip
     end
 
     # Returns Boolean indicating whether the remote file is present and has the same contents as
