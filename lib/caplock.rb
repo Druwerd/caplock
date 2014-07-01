@@ -2,7 +2,9 @@ require 'capistrano'
 
 module Capistrano
   module Caplock
-  
+
+    class LockedDeployError < RuntimeError ; end
+
     # Returns Boolean indicating the result of +filetest+ on +full_path+ on the server, evaluated by shell on 
     # the server (usually bash or something roughly compatible).
     def remote_filetest_passes?(filetest, full_path)
@@ -35,12 +37,16 @@ module Capistrano
     def self.load_into(configuration)
       configuration.load do
         set :lockfile, "cap.lock"
-        
+
+        # internal
+        set :keep_lock, false
+
         namespace :lock do
           desc "check lock"
           task :check, :roles => :app do
             if caplock.remote_file_exists?("#{deploy_to}/#{lockfile}")
-              abort "\n\n\n\e[0;31m A Deployment is already in progress\n Remove #{deploy_to}/#{lockfile} to unlock  \e[0m\n\n\n"
+              keep_lock = true
+              raise LockedDeployError, "\n\n\n\e[0;31m A Deployment is already in progress\n Remove #{deploy_to}/#{lockfile} to unlock  \e[0m\n\n\n"
             end
           end
 
@@ -49,16 +55,17 @@ module Capistrano
             timestamp = Time.now.strftime("%m/%d/%Y %H:%M:%S %Z")
             lock_message = "Deploy started at #{timestamp} in progress"
             put lock_message, "#{deploy_to}/#{lockfile}", :mode => 0644
+            on_rollback { find_and_execute_task("lock:release") }
           end
 
           desc "release lock"
           task :release, :roles => :app do
-             run "rm -f #{deploy_to}/#{lockfile}"
+             run "rm -f #{deploy_to}/#{lockfile}" unless keep_lock
           end
         end
 
         # Deployment
-        before "deploy", "lock:check"
+        before "deploy:update_code", "lock:check"
         after "lock:check", "lock:create"
         after "deploy", "lock:release"
 
