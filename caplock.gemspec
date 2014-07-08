@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{caplock}
-  s.version = "0.2.0"
+  s.name = "caplock"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Dru Ibarra}]
-  s.date = %q{2014-07-01}
-  s.description = %q{Adds a lock file to Capistrano deployments to prevent concurrent deployments.}
-  s.email = %q{Druwerd@gmail.com}
+  s.authors = ["Dru Ibarra", "Giorgio Premi"]
+  s.date = "2014-07-08"
+  s.description = "Adds a lock file to Capistrano deployments to prevent concurrent deployments."
+  s.email = "Druwerd@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
@@ -27,10 +27,10 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_caplock.rb"
   ]
-  s.homepage = %q{http://github.com/Druwerd/caplock}
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{Adds a lock file to Capistrano deployments}
+  s.homepage = "http://github.com/Druwerd/caplock"
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.23"
+  s.summary = "Adds a lock file to Capistrano deployments"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

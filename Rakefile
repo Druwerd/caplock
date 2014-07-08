@@ -9,7 +9,7 @@ begin
     gem.description = %Q{Adds a lock file to Capistrano deployments to prevent concurrent deployments.}
     gem.email = "Druwerd@gmail.com"
     gem.homepage = "http://github.com/Druwerd/caplock"
-    gem.authors = ["Dru Ibarra"]
+    gem.authors = ["Dru Ibarra", "Giorgio Premi"]
     gem.add_dependency "capistrano", '>= 2.9.0'
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
@@ -45,7 +45,7 @@ task :default => :test
 
 require 'rdoc/task'
 RDoc::Task.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+  version = File.exist?('VERSION') ? File.read('VERSION').strip : ""
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "caplock #{version}"
