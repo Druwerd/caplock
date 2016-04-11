@@ -72,7 +72,6 @@ module Capistrano
         # Rollback
         before "deploy:rollback", "lock:check"
         after "deploy:rollback", "lock:release"
-        
       end
     end
     

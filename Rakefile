@@ -11,7 +11,6 @@ begin
     gem.homepage = "http://github.com/Druwerd/caplock"
     gem.authors = ["Dru Ibarra", "Giorgio Premi"]
     gem.add_dependency "capistrano", '>= 2.9.0'
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -39,7 +38,7 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
+# task :test => :check_dependencies
 
 task :default => :test
 
